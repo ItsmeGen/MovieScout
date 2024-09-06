@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/movie"
+                android:fontFamily="@font/poppins"
                 android:textColor="@color/my_primary"
                 android:textSize="70sp" />
             <TextView
@@ -88,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="@string/Login"
+                android:fontFamily="@font/poppins"
                 android:textSize="20sp" />
 
         </LinearLayout>

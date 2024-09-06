@@ -26,6 +26,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    android:text="@string/welcome"
+                   android:fontFamily="@font/poppins"
                    android:textColor="@color/white"
                    android:textSize="40sp"
                    android:gravity="center"/>
@@ -82,6 +83,7 @@
                        android:layout_width="300dp"
                        android:layout_height="wrap_content"
                        android:text="@string/create_account"
+                       android:fontFamily="@font/poppins"
                        android:textSize="15sp"/>
 
                </LinearLayout>
