@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Scout</string>
+    <string name="movie">Movie</string>
+    <string name="scout">Scout</string>
+    <string name="email">Email/Username</string>
+    <string name="password">Password</string>
+    <string name="Login">Login</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="new_to">New to Movie Scout?</string>
+    <string name="Sign_up">Sign Up now</string>
+    <string name="or">Or Login with</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="fb_logo">facebook Logo</string>
+
+</resources>
