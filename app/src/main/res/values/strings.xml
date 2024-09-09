@@ -17,6 +17,14 @@
     <string name="Create_password">Create Password </string>
     <string name="confirm_password">Confirm Password</string>
     <string name="create_account">Create your Account</string>
+    <string name="discover">Discover Your</string>
+    <string name="favorite">Favorite Show</string>
+    <string name="find">Find Now and Watch Later!</string>
+    <string name="msg">you can browse movies ans show by genre,search for specific title or
+    checkout our Recommendation for you!
+    </string>
+
+    <string name="started">Get Started!</string>
 
 
 </resources>
