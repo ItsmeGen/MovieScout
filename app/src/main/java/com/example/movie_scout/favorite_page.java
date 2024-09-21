@@ -19,12 +19,5 @@ public class favorite_page extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_favorite_page);
 
-        ImageView btn_fav1 = findViewById(R.id.btn_fav);
-        btn_fav1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(favorite_page.this, favorite_page.class));
-            }
-        });
     }
 }
