@@ -25,6 +25,11 @@
     </string>
 
     <string name="started">Get Started!</string>
+    <string name="Trends">Trends and Popular </string>
+    <string name="home">Home</string>
+    <string name="fav">Favorite</string>
+    <string name="more">More</string>
+    <string name="favorite_page">Favorite</string>
 
 
 </resources>
