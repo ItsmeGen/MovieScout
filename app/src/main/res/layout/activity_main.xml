@@ -61,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
                     android:background="@drawable/custom_input"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/black"
                     android:drawableEnd="@drawable/person_icon"/>
 
 
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
                     android:background="@drawable/custom_input"
-                    android:textColorHint="@color/white"
+                    android:textColorHint="@color/black"
                     android:drawableEnd="@drawable/eye_icon"/>
 
                 <TextView

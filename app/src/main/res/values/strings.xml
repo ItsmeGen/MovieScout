@@ -12,7 +12,7 @@
     <string name="google_logo">Google Logo</string>
     <string name="fb_logo">facebook Logo</string>
     <string name="welcome">Welcome!</string>
-    <string name="display_name">Username</string>
+    <string name="display_name">Username/Email</string>
     <string name="Create_Email">Create an Email</string>
     <string name="Create_password">Create Password </string>
     <string name="confirm_password">Confirm Password</string>
