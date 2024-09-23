@@ -45,6 +45,11 @@ public class createAccount extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         User newUser = new User(username, password);
 
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill username and password", Toast.LENGTH_SHORT).show();
+            return; // Stop the execution if fields are empty
+        }
+
         ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
         Call<ResponseBody> call = apiService.registerUser(newUser);
         call.enqueue(new Callback<ResponseBody>() {
@@ -56,7 +61,7 @@ public class createAccount extends AppCompatActivity {
                     Log.d("Registration", "Success: " + response.body().toString());
                     Toast.makeText(createAccount.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getApplicationContext(), "Registration failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "username and password are already Exist.", Toast.LENGTH_SHORT).show();
                     Log.e("Registration", "Failed: " + response.errorBody().toString());
                 }
             }

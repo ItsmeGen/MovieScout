@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         User loginUser = new User(username, password);
 
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill username and password", Toast.LENGTH_SHORT).show();
+            return; // Stop the execution if fields are empty
+        }
+
         ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
         Call<ResponseBody> loginCall = apiService.loginUser(loginUser);
         loginCall.enqueue(new Callback<ResponseBody>() {
@@ -64,6 +71,20 @@ public class MainActivity extends AppCompatActivity {
                     // Login successful
                     startActivity(new Intent(MainActivity.this, homepage.class));
                     Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                }else{
+                    try {
+                        // Check for specific error messages
+                        String errorMessage = response.errorBody().string();
+                        if (errorMessage.contains("User not found")) {
+                            Toast.makeText(getApplicationContext(), "Invalid email.", Toast.LENGTH_SHORT).show();
+                        } else if (errorMessage.contains("Incorrect password")) {
+                            Toast.makeText(getApplicationContext(), "Incorrect password.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Login failed.", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
