@@ -19,5 +19,14 @@ public class homepage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_homepage);
 
+        ImageView btn = findViewById(R.id.btn_home);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepage.this, homepage.class));
+            }
+        });
+
     }
 }

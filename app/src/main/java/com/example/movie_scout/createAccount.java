@@ -45,10 +45,6 @@ public class createAccount extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         User newUser = new User(username, password);
 
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please fill username and password", Toast.LENGTH_SHORT).show();
-            return; // Stop the execution if fields are empty
-        }
 
         ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
         Call<ResponseBody> call = apiService.registerUser(newUser);

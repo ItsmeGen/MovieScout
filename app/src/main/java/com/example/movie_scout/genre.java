@@ -11,22 +11,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class favorite_page extends AppCompatActivity {
+public class genre extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_favorite_page);
+        setContentView(R.layout.activity_genre);
 
-        ImageView button_fav = findViewById(R.id.btn_fav);
-        button_fav.setOnClickListener(new View.OnClickListener() {
+        ImageView btn = findViewById(R.id.btn_genre);
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(favorite_page.this, favorite_page.class));
+                startActivity(new Intent(genre.this, genre.class));
             }
         });
-
-
     }
 }

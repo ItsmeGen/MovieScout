@@ -6,132 +6,139 @@
     android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homepage">
+    tools:context=".favorite_page">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginTop="30dp"
-            android:layout_alignParentTop="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp">
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:padding="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
                     android:text="@string/fav"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:padding="20dp"
-                android:gravity="end"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <ImageView
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/search_icon"/>
+                    android:layout_marginStart="220dp"
+                    android:src="@drawable/search_icon" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/person_pin"/>
 
             </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_marginBottom="70dp"
-            android:padding="20dp"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black">
+            android:layout_alignParentBottom="true"
+            android:padding="20dp">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_gravity="start"
+                    android:id="@+id/btn_home"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/home_icon"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/home_icon" />
 
-                <TextView
-                    android:layout_marginStart="5dp"
-                    android:layout_gravity="start"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/white"
-                    android:text="@string/home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/btn_fav"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/favorite_icon"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/favorite_icon" />
 
-                <TextView
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/white"
-                    android:text="@string/fav"
+                <ImageView
+                    android:id="@+id/btn_genre"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/genre_icon" />
+
+                <ImageView
+                    android:id="@+id/btn_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:src="@drawable/menu_icon" />
+
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/more_icon"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_gravity="end"
-                    android:fontFamily="@font/poppins"
-                    android:textColor="@color/white"
-                    android:text="@string/more"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="70dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/home"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="70dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/fav"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:fontFamily="@font/poppins"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+
 
             </LinearLayout>
 
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </RelativeLayout>
 

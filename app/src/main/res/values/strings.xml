@@ -30,6 +30,10 @@
     <string name="fav">Favorite</string>
     <string name="more">More</string>
     <string name="favorite_page">Favorite</string>
+    <string name="More">More</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="genre">Genre</string>
+    <string name="menu">Menu</string>
 
 
 </resources>
