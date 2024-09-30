@@ -2,9 +2,12 @@ package com.example.movie_scout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,17 +24,16 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declare your views (EditTexts, Buttons, etc.)
+    // Declare your views (EditTexts, Buttons)
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button loginButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize your views
+        // Initialize views
         usernameEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         loginButton = findViewById(R.id.login_btn);
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Login Failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }
 

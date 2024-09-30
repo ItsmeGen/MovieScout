@@ -19,11 +19,27 @@ public class genre extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_genre);
 
-        ImageView btn = findViewById(R.id.btn_genre);
-        btn.setOnClickListener(new View.OnClickListener() {
+        ImageView home_btn =findViewById(R.id.btn_home);
+        ImageView fav_btn =findViewById(R.id.btn_fav);
+        ImageView menu_btn =findViewById(R.id.btn_menu);
+
+        home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, genre.class));
+                startActivity(new Intent(genre.this, homepage.class));
+            }
+        });
+        fav_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(genre.this, favorite_page.class));
+            }
+        });
+
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(genre.this, menu.class));
             }
         });
     }

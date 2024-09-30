@@ -27,7 +27,7 @@ public class createAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        // Initialize your views
+        // Initialize views
         usernameEditText = findViewById(R.id.username_id);
         passwordEditText = findViewById(R.id.password_id);
         registerButton = findViewById(R.id.btn_create);
@@ -44,6 +44,28 @@ public class createAccount extends AppCompatActivity {
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         User newUser = new User(username, password);
+
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please fill in both username and password", Toast.LENGTH_SHORT).show();
+                return; // Stop if fields are empty
+            }
+
+            // Check for username length (min 10, max 15)
+            if (username.length() < 10 || username.length() > 15) {
+                Toast.makeText(this, "Username must be between 10 and 15 characters", Toast.LENGTH_SHORT).show();
+                return; // Stop if username is not within the range
+            }
+
+            // Check for password length (min 10, max 15)
+            if (password.length() < 10 || password.length() > 15) {
+                Toast.makeText(this, "Password must be between 10 and 15 characters", Toast.LENGTH_SHORT).show();
+                return; // Stop if password is not within the range
+            }
+
+            if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill username and password", Toast.LENGTH_SHORT).show();
+            return; // Stop the execution if fields are empty
+            }
 
 
         ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);

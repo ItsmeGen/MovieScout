@@ -19,11 +19,27 @@ public class favorite_page extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_favorite_page);
 
-        ImageView button_fav = findViewById(R.id.btn_fav);
-        button_fav.setOnClickListener(new View.OnClickListener() {
+        ImageView home_btn =findViewById(R.id.btn_home);
+        ImageView genre_btn =findViewById(R.id.btn_genre);
+        ImageView menu_btn =findViewById(R.id.btn_menu);
+
+        home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(favorite_page.this, favorite_page.class));
+                startActivity(new Intent(favorite_page.this, homepage.class));
+            }
+        });
+        genre_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(favorite_page.this, genre.class));
+            }
+        });
+
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(favorite_page.this, menu.class));
             }
         });
 
