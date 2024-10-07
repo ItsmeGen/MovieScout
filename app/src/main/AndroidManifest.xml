@@ -16,9 +16,6 @@
         android:theme="@style/Theme.Movie_Scout"
         tools:targetApi="31">
         <activity
-            android:name=".homepage2"
-            android:exported="false" />
-        <activity
             android:name=".menu"
             android:exported="false" />
         <activity
