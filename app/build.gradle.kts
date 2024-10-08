@@ -42,4 +42,7 @@ dependencies {
     implementation (libs.retrofit)
     implementation (libs.gsonConverter)
     implementation(libs.okhttp)
+    implementation (libs.recyclerview)
+    implementation (libs.glide )
+    annotationProcessor (libs.glide)
 }

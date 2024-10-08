@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     // Login successful
-                    startActivity(new Intent(MainActivity.this, homepage.class));
+                    startActivity(new Intent(MainActivity.this,homepage.class));
                     Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                 }else{
                     try {
