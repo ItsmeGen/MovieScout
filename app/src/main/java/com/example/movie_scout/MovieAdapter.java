@@ -1,5 +1,6 @@
 package com.example.movie_scout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +38,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.yearTextView.setText(String.valueOf(movie.getYear_released()));
         holder.directorTextView.setText(movie.getDirector());
 
-        Glide.with(holder.itemView.getContext())
-                .load(movie.getImageUrl())
-                .into(holder.movieImageView);
+        // Log the image URL for debugging
+        Log.d("MovieAdapter", "Loading image from: " + movie.getImage_url());
 
+        Glide.with(holder.itemView.getContext())
+                .load(movie.getImage_url())
+                .into(holder.movieImageView);
     }
 
     @Override
@@ -51,6 +54,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView, descriptionTextView, genreTextView, yearTextView, directorTextView;
         ImageView movieImageView;
+
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleTextView);
@@ -59,7 +63,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             directorTextView = itemView.findViewById(R.id.directorTextView);
             yearTextView = itemView.findViewById(R.id.yearTextView);
             movieImageView = itemView.findViewById(R.id.movieImageView);
-
         }
     }
 }
