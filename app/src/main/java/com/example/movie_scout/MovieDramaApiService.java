@@ -5,7 +5,7 @@ import retrofit2.http.GET;
 import java.util.List;
 
 
-public interface MovieApiService {
-    @GET("movies")
+public interface MovieDramaApiService {
+    @GET("drama_movies")
     Call<List<Movie>> getAllMovies();
 }

@@ -30,16 +30,18 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true">
 
-            <EditText
-                android:background="@drawable/search_input"
+
+            <TextView
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColorHint="@color/black"
-                android:padding="10dp"
-                android:hint="Search"/>
+                android:text="@string/trends_and_popular"
+                android:textSize="20sp"
+                android:textColor="@color/my_primary"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:background="@color/black"
@@ -54,31 +56,31 @@
 
                 <ImageView
                     android:id="@+id/btn_home"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="25dp"
+                    android:layout_margin="28dp"
                     android:src="@drawable/home_icon" />
 
 
                 <ImageView
                     android:id="@+id/btn_fav"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="25dp"
+                    android:layout_margin="28dp"
                     android:src="@drawable/favorite_icon" />
 
                 <ImageView
                     android:id="@+id/btn_genre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="25dp"
+                    android:layout_margin="28dp"
                     android:src="@drawable/genre_icon" />
 
                 <ImageView
                     android:id="@+id/btn_menu"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="25dp"
+                    android:layout_margin="28dp"
                     android:src="@drawable/menu_icon" />
 
             </LinearLayout>
@@ -96,37 +98,37 @@
                     android:fontFamily="@font/poppins"
                     android:text="@string/home"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="55dp"
                     android:layout_marginTop="70dp"
                     android:fontFamily="@font/poppins"
                     android:text="@string/fav"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:fontFamily="@font/poppins"
-                    android:layout_marginStart="45dp"
+                    android:layout_marginStart="52dp"
                     android:layout_marginTop="70dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/genre"
                     android:textColor="@color/white"
-                    android:textSize="15sp"/>
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:fontFamily="@font/poppins"
-                    android:layout_marginStart="53dp"
+                    android:layout_marginStart="60dp"
                     android:layout_marginTop="70dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/menu"
                     android:textColor="@color/white"
-                    android:textSize="15sp"/>
+                    android:textSize="12sp"/>
 
             </LinearLayout>
 

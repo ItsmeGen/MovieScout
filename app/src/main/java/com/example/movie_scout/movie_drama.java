@@ -1,5 +1,7 @@
 package com.example.movie_scout;
 
+import static com.example.movie_scout.R.id.recyclerDramaMovies;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,46 +21,58 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class genre extends AppCompatActivity {
+public class movie_drama extends AppCompatActivity {
 
-    private RecyclerView recyclerActionMovies;
-    private MovieActionAdapter movieAdapter;
+    private RecyclerView recyclerDramaMovies;
+    private MovieDramaAdapter movieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_genre);
+        setContentView(R.layout.activity_movie_drama);
 
-        TextView btn_drama =findViewById(R.id.btn_drama);
+        TextView action_btn = findViewById(R.id.btn_action);
         ImageView home_btn =findViewById(R.id.btn_home);
-        ImageView fav_btn =findViewById(R.id.btn_genre);
+        ImageView fav_btn =findViewById(R.id.btn_fav);
         ImageView menu_btn =findViewById(R.id.btn_menu);
+        ImageView genre_btn =findViewById(R.id.btn_genre);
 
 
-        btn_drama.setOnClickListener(new View.OnClickListener() {
+
+
+
+        action_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this,movie_drama.class));
+                startActivity(new Intent(movie_drama.this, genre.class));
             }
         });
 
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, homepage.class));
+                startActivity(new Intent(movie_drama.this, homepage.class));
             }
         });
+
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, favorite_page.class));
+                startActivity(new Intent(movie_drama.this, favorite_page.class));
             }
         });
 
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, menu.class));
+                startActivity(new Intent(movie_drama.this, menu.class));
+            }
+        });
+
+        genre_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(movie_drama.this, genre.class));
             }
         });
 
@@ -66,9 +80,9 @@ public class genre extends AppCompatActivity {
 
 
         // Initialize RecyclerView
-        recyclerActionMovies = findViewById(R.id.recyclerActionMovies);
-        recyclerActionMovies.setLayoutManager(new LinearLayoutManager(this));
-        recyclerActionMovies.setHasFixedSize(true);
+        recyclerDramaMovies = findViewById(R.id.recyclerDramaMovies);
+        recyclerDramaMovies.setLayoutManager(new LinearLayoutManager(this));
+        recyclerDramaMovies.setHasFixedSize(true);
 
         // Fetch and display the movies
         fetchMovies();
@@ -76,7 +90,7 @@ public class genre extends AppCompatActivity {
 
     private void fetchMovies() {
         // Create instance of the MovieApiService
-        MovieActionApiService  apiService = MovieActionApiClient.getRetrofitInstance().create(MovieActionApiService.class);
+        MovieDramaApiService  apiService = MovieDramaApiClient.getRetrofitInstance().create(MovieDramaApiService.class);
         Call<List<Movie>> call = apiService.getAllMovies();
 
         // Make the API call
@@ -98,7 +112,7 @@ public class genre extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                Toast.makeText(genre.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(movie_drama.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("MoviesAPI", "API call failed: " + t.getMessage());
             }
         });
@@ -106,7 +120,7 @@ public class genre extends AppCompatActivity {
 
     private void displayMovies(List<Movie> movies) {
         // Set adapter for RecyclerView
-        movieAdapter = new MovieActionAdapter(movies);
-        recyclerActionMovies.setAdapter(movieAdapter);
+        movieAdapter = new MovieDramaAdapter(movies);
+        recyclerDramaMovies.setAdapter(movieAdapter);
     }
 }

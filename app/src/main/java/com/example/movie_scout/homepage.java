@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,30 @@ public class homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+        ImageView menu_btn =findViewById(R.id.btn_menu);
+        ImageView fav_btn =findViewById(R.id.btn_fav);
+        ImageView genre_btn =findViewById(R.id.btn_genre);
+
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepage.this, menu.class));
+            }
+        });
+        genre_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepage.this, genre.class));
+            }
+        });
+
+        fav_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(homepage.this, favorite_page.class));
+            }
+        });
 
         // Initialize RecyclerView
         recyclerViewMovies = findViewById(R.id.recyclerViewMovies);

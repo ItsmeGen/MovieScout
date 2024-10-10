@@ -34,6 +34,11 @@
     <string name="sign_out">Sign Out</string>
     <string name="genre">Genre</string>
     <string name="menu">Menu</string>
+    <string name="search">Search</string>
+    <string name="trends_and_popular">Trends and Popular</string>
+    <string name="horror">Horror</string>
+    <string name="comedy">Comedy</string>
+    <string name="action">Action</string>
 
 
 </resources>

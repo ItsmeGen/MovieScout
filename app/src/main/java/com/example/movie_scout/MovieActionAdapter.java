@@ -15,18 +15,18 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
+public class MovieActionAdapter extends RecyclerView.Adapter<MovieActionAdapter.MovieViewHolder> {
 
     private List<Movie> movieList;
 
-    public MovieAdapter(List<Movie> movieList) {
+    public MovieActionAdapter(List<Movie> movieList) {
         this.movieList = movieList;
     }
 
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movie, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movie_action, parent, false);
         return new MovieViewHolder(view);
     }
 
