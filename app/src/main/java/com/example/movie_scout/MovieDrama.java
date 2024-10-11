@@ -3,18 +3,15 @@ package com.example.movie_scout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -22,45 +19,77 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class homepage extends AppCompatActivity {
+public class MovieDrama extends AppCompatActivity {
 
-    private RecyclerView recyclerViewMovies;
-    private MovieAdapter movieAdapter;
+    private RecyclerView recyclerDramaMovies;
+    private MovieDramaAdapter movieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_movie_drama);
 
-
-        ImageView menu_btn =findViewById(R.id.btn_menu);
+        TextView horror_btn = findViewById(R.id.btn_horror);
+        TextView action_btn = findViewById(R.id.btn_action);//magdagdag ng comedy mamaya
+        // Divider
+        ImageView home_btn =findViewById(R.id.btn_home);
         ImageView fav_btn =findViewById(R.id.btn_fav);
+        ImageView menu_btn =findViewById(R.id.btn_menu);
         ImageView genre_btn =findViewById(R.id.btn_genre);
 
-        menu_btn.setOnClickListener(new View.OnClickListener() {
+
+        //Constraint button(Top)
+        action_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepage.this, menu.class));
+                startActivity(new Intent(MovieDrama.this, genre.class));
             }
         });
-        genre_btn.setOnClickListener(new View.OnClickListener() {
+
+        horror_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepage.this, genre.class));
+                startActivity(new Intent(MovieDrama.this, MovieHorror.class));
+            }
+        });
+
+
+        //Constraint button(bottom)
+        home_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MovieDrama.this, homepage.class));
             }
         });
 
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepage.this, favorite_page.class));
+                startActivity(new Intent(MovieDrama.this, favorite_page.class));
             }
         });
 
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MovieDrama.this, menu.class));
+            }
+        });
+
+        genre_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MovieDrama.this, genre.class));
+            }
+        });
+
+
+
+
         // Initialize RecyclerView
-        recyclerViewMovies = findViewById(R.id.recyclerViewMovies);
-        recyclerViewMovies.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewMovies.setHasFixedSize(true);
+        recyclerDramaMovies = findViewById(R.id.recyclerDramaMovies);
+        recyclerDramaMovies.setLayoutManager(new LinearLayoutManager(this));
+        recyclerDramaMovies.setHasFixedSize(true);
 
         // Fetch and display the movies
         fetchMovies();
@@ -68,7 +97,7 @@ public class homepage extends AppCompatActivity {
 
     private void fetchMovies() {
         // Create instance of the MovieApiService
-        MovieApiService apiService = MovieApiClient.getRetrofitInstance().create(MovieApiService.class);
+        MovieDramaApiService  apiService = MovieDramaApiClient.getRetrofitInstance().create(MovieDramaApiService.class);
         Call<List<Movie>> call = apiService.getAllMovies();
 
         // Make the API call
@@ -90,7 +119,7 @@ public class homepage extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                Toast.makeText(homepage.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MovieDrama.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("MoviesAPI", "API call failed: " + t.getMessage());
             }
         });
@@ -98,7 +127,7 @@ public class homepage extends AppCompatActivity {
 
     private void displayMovies(List<Movie> movies) {
         // Set adapter for RecyclerView
-        movieAdapter = new MovieAdapter(movies);
-        recyclerViewMovies.setAdapter(movieAdapter);
+        movieAdapter = new MovieDramaAdapter(movies);
+        recyclerDramaMovies.setAdapter(movieAdapter);
     }
 }

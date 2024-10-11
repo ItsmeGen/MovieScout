@@ -8,7 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class movie_drama2 extends AppCompatActivity {
+public class MovieDrama2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

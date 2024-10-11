@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="20dp"
     android:background="@color/black"
-    tools:context=".movie_drama2">
+    tools:context=".MovieDrama2">
 
     <ImageView
         android:id="@+id/movieImageView"

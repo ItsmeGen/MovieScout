@@ -16,10 +16,22 @@
         android:theme="@style/Theme.Movie_Scout"
         tools:targetApi="31">
         <activity
-            android:name=".movie_drama2"
+            android:name=".buttom_nav_menu"
             android:exported="false" />
         <activity
-            android:name=".movie_drama"
+            android:name=".MovieHorrorAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".MovieHorror2"
+            android:exported="false" />
+        <activity
+            android:name=".MovieHorror"
+            android:exported="false" />
+        <activity
+            android:name=".MovieDrama2"
+            android:exported="false" />
+        <activity
+            android:name=".MovieDrama"
             android:exported="false" />
         <activity
             android:name=".MovieDramaApiService"

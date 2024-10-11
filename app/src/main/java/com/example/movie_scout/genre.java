@@ -29,19 +29,29 @@ public class genre extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genre);
 
-        TextView btn_drama =findViewById(R.id.btn_drama);
+        TextView drama_btn =findViewById(R.id.btn_drama);
+        TextView horror_btn =findViewById(R.id.btn_horror);//magdagdag ng comedy
+        //divider
         ImageView home_btn =findViewById(R.id.btn_home);
-        ImageView fav_btn =findViewById(R.id.btn_genre);
+        ImageView fav_btn =findViewById(R.id.btn_fav);
         ImageView menu_btn =findViewById(R.id.btn_menu);
 
 
-        btn_drama.setOnClickListener(new View.OnClickListener() {
+        drama_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this,movie_drama.class));
+                startActivity(new Intent(genre.this, MovieDrama.class));
             }
         });
 
+        horror_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(genre.this, MovieHorror.class));
+            }
+        });
+
+        // Constraint button (bottom)
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
