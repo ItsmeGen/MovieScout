@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class MovieHorrorApiClient {
-    private static final String BASE_URL = "http://192.168.105.240:3005/"; // For Android Emulator
+    private static final String BASE_URL = "http://192.168.164.240:3005/"; // For Android Emulator
     private static Retrofit retrofit;
 
     public static Retrofit getRetrofitInstance() {

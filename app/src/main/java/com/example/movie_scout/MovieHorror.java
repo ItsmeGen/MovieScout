@@ -56,7 +56,7 @@ public class MovieHorror extends AppCompatActivity {
         btn_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieHorror.this, genre.class));
+                startActivity(new Intent(MovieHorror.this, GenrePage.class));
             }
         });
 
@@ -72,7 +72,7 @@ public class MovieHorror extends AppCompatActivity {
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieHorror.this, favorite_page.class));
+                startActivity(new Intent(MovieHorror.this, FavoritePage.class));
             }
         });
 
@@ -80,14 +80,14 @@ public class MovieHorror extends AppCompatActivity {
         genre_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieHorror.this, genre.class));
+                startActivity(new Intent(MovieHorror.this, GenrePage.class));
             }
         });
 
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieHorror.this, menu.class));
+                startActivity(new Intent(MovieHorror.this, MenuPage.class));
             }
         });
 

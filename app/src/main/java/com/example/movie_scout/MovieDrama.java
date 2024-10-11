@@ -42,7 +42,7 @@ public class MovieDrama extends AppCompatActivity {
         action_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieDrama.this, genre.class));
+                startActivity(new Intent(MovieDrama.this, GenrePage.class));
             }
         });
 
@@ -65,21 +65,21 @@ public class MovieDrama extends AppCompatActivity {
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieDrama.this, favorite_page.class));
+                startActivity(new Intent(MovieDrama.this, FavoritePage.class));
             }
         });
 
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieDrama.this, menu.class));
+                startActivity(new Intent(MovieDrama.this, MenuPage.class));
             }
         });
 
         genre_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MovieDrama.this, genre.class));
+                startActivity(new Intent(MovieDrama.this, GenrePage.class));
             }
         });
 

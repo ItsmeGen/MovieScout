@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".genre">
+    tools:context=".homepage">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMovies"
@@ -30,54 +30,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true">
 
-            <LinearLayout
-                android:gravity="center"
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:id="@+id/btn_action"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/action"
-                    android:textSize="20sp"
-                    android:textColor="@color/my_primary"/>
-
-                <TextView
-                    android:id="@+id/btn_drama"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Drama"
-                    android:textSize="20sp"
-                    android:textColor="@color/my_primary"/>
-
-                <TextView
-                    android:id="@+id/btn_horror"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/horror"
-                    android:textSize="20sp"
-                    android:textColor="@color/my_primary"/>
-
-                <TextView
-                    android:id="@+id/btn_comedy"
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/comedy"
-                    android:textSize="20sp"
-                    android:textColor="@color/my_primary"/>
-
-            </LinearLayout>
-
-
-
-
+                android:text="@string/Trends"
+                android:textColor="@color/my_primary"
+                android:textSize="30sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class genre extends AppCompatActivity {
+public class GenrePage extends AppCompatActivity {
 
     private RecyclerView recyclerActionMovies;
     private MovieActionAdapter movieAdapter;
@@ -40,14 +40,14 @@ public class genre extends AppCompatActivity {
         drama_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, MovieDrama.class));
+                startActivity(new Intent(GenrePage.this, MovieDrama.class));
             }
         });
 
         horror_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, MovieHorror.class));
+                startActivity(new Intent(GenrePage.this, MovieHorror.class));
             }
         });
 
@@ -55,20 +55,20 @@ public class genre extends AppCompatActivity {
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, homepage.class));
+                startActivity(new Intent(GenrePage.this, homepage.class));
             }
         });
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, favorite_page.class));
+                startActivity(new Intent(GenrePage.this, FavoritePage.class));
             }
         });
 
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(genre.this, menu.class));
+                startActivity(new Intent(GenrePage.this, MenuPage.class));
             }
         });
 
@@ -108,7 +108,7 @@ public class genre extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                Toast.makeText(genre.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(GenrePage.this, "API call failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("MoviesAPI", "API call failed: " + t.getMessage());
             }
         });

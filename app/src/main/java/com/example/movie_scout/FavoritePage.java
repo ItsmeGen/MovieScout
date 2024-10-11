@@ -7,11 +7,8 @@ import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class favorite_page extends AppCompatActivity {
+public class FavoritePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +23,20 @@ public class favorite_page extends AppCompatActivity {
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(favorite_page.this, homepage.class));
+                startActivity(new Intent(FavoritePage.this, homepage.class));
             }
         });
         genre_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(favorite_page.this, genre.class));
+                startActivity(new Intent(FavoritePage.this, GenrePage.class));
             }
         });
 
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(favorite_page.this, menu.class));
+                startActivity(new Intent(FavoritePage.this, MenuPage.class));
             }
         });
 

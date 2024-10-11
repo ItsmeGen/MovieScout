@@ -3,18 +3,14 @@ package com.example.movie_scout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -40,20 +36,20 @@ public class homepage extends AppCompatActivity {
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepage.this, menu.class));
+                startActivity(new Intent(homepage.this, MenuPage.class));
             }
         });
         genre_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepage.this, genre.class));
+                startActivity(new Intent(homepage.this, GenrePage.class));
             }
         });
 
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(homepage.this, favorite_page.class));
+                startActivity(new Intent(homepage.this, FavoritePage.class));
             }
         });
 

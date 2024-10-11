@@ -9,11 +9,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class menu extends AppCompatActivity {
+public class MenuPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +23,11 @@ public class menu extends AppCompatActivity {
         btn_sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(menu.this,MainActivity.class);
+                Intent intent = new Intent(MenuPage.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Clear the back stack
                 startActivity(intent);
                 finish();
-                Toast.makeText(menu.this, "Successfully Log Out", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MenuPage.this, "Successfully Log Out", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -42,20 +39,20 @@ public class menu extends AppCompatActivity {
         home_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(menu.this, homepage.class));
+                startActivity(new Intent(MenuPage.this, homepage.class));
             }
         });
         genre_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(menu.this, genre.class));
+                startActivity(new Intent(MenuPage.this, GenrePage.class));
             }
         });
 
         fav_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(menu.this, favorite_page.class));
+                startActivity(new Intent(MenuPage.this, FavoritePage.class));
             }
         });
 

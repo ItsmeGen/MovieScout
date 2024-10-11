@@ -15,7 +15,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class createAccount extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
 
     // Declare your views (EditTexts, Buttons, etc.)
     private EditText usernameEditText;
@@ -75,9 +75,9 @@ public class createAccount extends AppCompatActivity {
             public void onResponse(Call<ResponseBody>call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     // Registration successful
-                    startActivity(new Intent(createAccount.this,MainActivity.class));
+                    startActivity(new Intent(CreateAccount.this,MainActivity.class));
                     Log.d("Registration", "Success: " + response.body().toString());
-                    Toast.makeText(createAccount.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateAccount.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getApplicationContext(), "username and password are already Exist.", Toast.LENGTH_SHORT).show();
                     Log.e("Registration", "Failed: " + response.errorBody().toString());
@@ -87,7 +87,7 @@ public class createAccount extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 // Handle error
-                Toast.makeText(createAccount.this, "Registration Failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreateAccount.this, "Registration Failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("Registration", "Error: " + t.getMessage());
 
             }

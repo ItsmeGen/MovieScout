@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Movie_Scout"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".buttom_nav_menu"
             android:exported="false" />
         <activity
@@ -40,13 +43,13 @@
             android:name=".item_movie"
             android:exported="false" />
         <activity
-            android:name=".menu"
+            android:name=".MenuPage"
             android:exported="false" />
         <activity
-            android:name=".genre"
+            android:name=".GenrePage"
             android:exported="false" />
         <activity
-            android:name=".favorite_page"
+            android:name=".FavoritePage"
             android:exported="false" />
         <activity
             android:name=".homepage"
@@ -55,7 +58,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".createAccount"
+            android:name=".CreateAccount"
             android:exported="false" />
         <activity
             android:name=".intro_page"
