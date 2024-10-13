@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Movie_Scout"
         tools:targetApi="31">
         <activity
+            android:name=".ActionMovie"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
@@ -40,7 +43,7 @@
             android:name=".MovieDramaApiService"
             android:exported="false" />
         <activity
-            android:name=".item_movie"
+            android:name=".ItemMovie"
             android:exported="false" />
         <activity
             android:name=".MenuPage"
@@ -61,7 +64,7 @@
             android:name=".CreateAccount"
             android:exported="false" />
         <activity
-            android:name=".intro_page"
+            android:name=".IntroPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
