@@ -5,15 +5,14 @@
     android:layout_height="match_parent">
 
 
-    <!-- Add your content for the Action genre here -->
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerComedyMovies"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comedy Movies"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:layout_gravity="center"/>
+        android:paddingTop="50dp"
+        android:paddingBottom="100dp"
+        android:layout_gravity="center" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,7 +35,7 @@
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:textColor="@color/my_primary"/>
+                android:textColor="@color/text_color_selector"/>
 
             <TextView
                 android:id="@+id/btn_drama"
@@ -46,8 +45,7 @@
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:textColor="@color/my_primary"/>
-
+                android:textColor="@color/text_color_selector"/>
             <TextView
                 android:id="@+id/btn_horror"
                 android:layout_width="wrap_content"
@@ -56,7 +54,7 @@
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:textColor="@color/my_primary"/>
+                android:textColor="@color/text_color_selector"/>
             <TextView
                 android:id="@+id/btn_comedy"
                 android:layout_width="wrap_content"
@@ -64,7 +62,7 @@
                 android:text="Comedy"
                 android:textSize="25sp"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/my_primary"/>
+                android:textColor="@color/text_color_selector"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

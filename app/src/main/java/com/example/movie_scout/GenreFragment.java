@@ -1,38 +1,29 @@
 package com.example.movie_scout;
 
 import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-
+import android.util.Log;
 
 public class GenreFragment extends Fragment {
 
     private RecyclerView recyclerViewMovies;
     private MovieActionAdapter movieAdapter;
+
+    // Declare TextView variables
+    private TextView textAction, textDrama, textHorror, textComedy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,17 +32,31 @@ public class GenreFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_genre, container, false);
 
         // Find TextViews
-        TextView textAction = view.findViewById(R.id.btn_action);
-        TextView textDrama = view.findViewById(R.id.btn_drama);
-        TextView textHorror = view.findViewById(R.id.btn_horror);
-        TextView textComedy = view.findViewById(R.id.btn_comedy);
+        textAction = view.findViewById(R.id.btn_action);
+        textDrama = view.findViewById(R.id.btn_drama);
+        textHorror = view.findViewById(R.id.btn_horror);
+        textComedy = view.findViewById(R.id.btn_comedy);
 
-        // Set click listeners to replace fragments
-        textAction.setOnClickListener(v -> replaceFragment(new ActionFragment()));
-        textDrama.setOnClickListener(v -> replaceFragment(new DramaFragment()));
-        textHorror.setOnClickListener(v -> replaceFragment(new HorrorFragment()));
-        textComedy.setOnClickListener(v -> replaceFragment(new ComedyFragment()));
+        // Set click listeners to replace fragments and update text color
+        textAction.setOnClickListener(v -> {
+            replaceFragment(new ActionFragment());
+            updateTextViewColors(textAction);  // Update text color when Action is selected
+        });
 
+        textDrama.setOnClickListener(v -> {
+            replaceFragment(new DramaFragment());
+            updateTextViewColors(textDrama);  // Update text color when Drama is selected
+        });
+
+        textHorror.setOnClickListener(v -> {
+            replaceFragment(new HorrorFragment());
+            updateTextViewColors(textHorror);  // Update text color when Horror is selected
+        });
+
+        textComedy.setOnClickListener(v -> {
+            replaceFragment(new ComedyFragment());
+            updateTextViewColors(textComedy);  // Update text color when Comedy is selected
+        });
 
         // Initialize RecyclerView
         recyclerViewMovies = view.findViewById(R.id.recyclerViewMovies);
@@ -69,6 +74,17 @@ public class GenreFragment extends Fragment {
         transaction.replace(R.id.frame_layout, fragment);  // Replace with the ID of your FrameLayout container
         transaction.addToBackStack(null);  // Add to back stack so you can navigate back
         transaction.commit();
+    }
+
+    private void updateTextViewColors(TextView selectedTextView) {
+        // Reset all text colors to default
+        textAction.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+        textDrama.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+        textHorror.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+        textComedy.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+
+        // Set the selected TextView's text color to white
+        selectedTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
     }
 
     private void fetchMovies() {

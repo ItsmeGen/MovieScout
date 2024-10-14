@@ -51,8 +51,8 @@ public class CreateAccount extends AppCompatActivity {
             }
 
             // Check for username length (min 10, max 15)
-            if (username.length() < 10 || username.length() > 15) {
-                Toast.makeText(this, "Username must be between 10 and 15 characters", Toast.LENGTH_SHORT).show();
+            if (username.length() < 15 || username.length() > 20) {
+                Toast.makeText(this, "Username must be between 15 and 20 characters", Toast.LENGTH_SHORT).show();
                 return; // Stop if username is not within the range
             }
 

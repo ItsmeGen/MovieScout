@@ -116,42 +116,6 @@
 
             </LinearLayout>
 
-
-            <TextView
-                android:layout_marginBottom="200dp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/or"
-                android:textSize="15sp"
-                android:textColor="@color/white"/>
-
-            <LinearLayout
-                android:layout_marginBottom="120dp"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_marginEnd="20dp"
-                android:contentDescription="@string/fb_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/goup5"/>
-
-            <ImageView
-                android:contentDescription="@string/google_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/group7"/>
-
-            </LinearLayout>
-
-
-
         </RelativeLayout>
 
 
