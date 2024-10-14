@@ -68,7 +68,7 @@ public class CreateAccount extends AppCompatActivity {
             }
 
 
-        ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
+        ApiService apiService = LoginApiClient.getRetrofitInstance().create(ApiService.class);
         Call<ResponseBody> call = apiService.registerUser(newUser);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

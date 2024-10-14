@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity2 extends AppCompatActivity {
+public class BottomNavMenu extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private FrameLayout framelayout;
@@ -20,7 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_bottom_nav);
 
         bottomNavigationView = findViewById(R.id.navigationMenu);
         framelayout = findViewById(R.id.frame_layout);

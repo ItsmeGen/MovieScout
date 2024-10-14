@@ -20,7 +20,7 @@ import android.util.Log;
 public class GenreFragment extends Fragment {
 
     private RecyclerView recyclerViewMovies;
-    private MovieActionAdapter movieAdapter;
+    private MovieAdapter movieAdapter;
 
     // Declare TextView variables
     private TextView textAction, textDrama, textHorror, textComedy;
@@ -119,7 +119,7 @@ public class GenreFragment extends Fragment {
 
     private void displayMovies(List<Movie> movies) {
         // Set adapter for RecyclerView
-        movieAdapter = new MovieActionAdapter(movies);
+        movieAdapter = new MovieAdapter(movies);
         recyclerViewMovies.setAdapter(movieAdapter);
     }
 }

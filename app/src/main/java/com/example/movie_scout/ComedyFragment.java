@@ -25,7 +25,7 @@ import retrofit2.Response;
 public class ComedyFragment extends Fragment {
 
     private RecyclerView recyclerComedyMovies;
-    private MovieComedyAdapter movieAdapter;
+    private MovieAdapter movieAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,7 +91,7 @@ public class ComedyFragment extends Fragment {
 
     private void displayMovies(List<Movie> movies) {
         // Set adapter for RecyclerView
-        movieAdapter = new MovieComedyAdapter(movies);
+        movieAdapter = new MovieAdapter(movies);
         recyclerComedyMovies.setAdapter(movieAdapter);
     }
 

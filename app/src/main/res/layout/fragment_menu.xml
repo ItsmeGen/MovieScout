@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="@string/menu"
         android:textColor="@color/my_primary"
-        android:textSize="25sp"
+        android:textSize="30sp"
         tools:ignore="MissingConstraints" />
 
         <TextView

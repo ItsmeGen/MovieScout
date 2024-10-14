@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
             return; // Stop the execution if fields are empty
         }
 
-        ApiService apiService = ApiClient.getRetrofitInstance().create(ApiService.class);
+        ApiService apiService = LoginApiClient.getRetrofitInstance().create(ApiService.class);
         Call<ResponseBody> loginCall = apiService.loginUser(loginUser);
         loginCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     // Login successful
-                    startActivity(new Intent(MainActivity.this, MainActivity2.class));
+                    startActivity(new Intent(MainActivity.this, BottomNavMenu.class));
                     Toast.makeText(MainActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
                 }else{
                     try {
