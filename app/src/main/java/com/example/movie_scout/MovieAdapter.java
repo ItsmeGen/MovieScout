@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
     private List<Movie> movieList;
@@ -42,6 +41,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         // Log the image URL for debugging
         Log.d("MovieAdapter", "Loading image from: " + movie.getImage_url());
 
+        // Load movie image using Glide
         Glide.with(holder.itemView.getContext())
                 .load(movie.getImage_url())
                 .into(holder.movieImageView);
@@ -50,6 +50,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public int getItemCount() {
         return movieList.size();
+    }
+
+    // Method to update the list of movies
+    public void updateMovieList(List<Movie> newMovieList) {
+        movieList = newMovieList;  // Update the movie list with new data
+        notifyDataSetChanged();    // Notify the adapter that the data has changed
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {

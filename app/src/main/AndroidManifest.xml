@@ -16,15 +16,6 @@
         android:theme="@style/Theme.Movie_Scout"
         tools:targetApi="31">
         <activity
-            android:name=".MovieComedy2"
-            android:exported="false" />
-        <activity
-            android:name=".MovieHorrorAdapter"
-            android:exported="false" />
-        <activity
-            android:name=".MovieHorror2"
-            android:exported="false" />
-        <activity
             android:name=".MovieDramaApiService"
             android:exported="false" />
         <activity
