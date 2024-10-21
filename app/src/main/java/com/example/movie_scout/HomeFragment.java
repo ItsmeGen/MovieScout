@@ -2,10 +2,13 @@ package com.example.movie_scout;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
@@ -21,8 +24,8 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewMovies;
     private MovieAdapter movieAdapter;
-    private List<Movie> movieList = new ArrayList<>(); // Full movie list
-    private List<Movie> filteredList = new ArrayList<>(); // Filtered list for search
+    private List<Movie> movieList = new ArrayList<>();
+    private List<Movie> filteredList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -34,34 +37,72 @@ public class HomeFragment extends Fragment {
         recyclerViewMovies.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewMovies.setHasFixedSize(true);
 
-        // Set up SearchView
-        SearchView searchView = view.findViewById(R.id.searchView);
+        // Enable options menu to show SearchView in the toolbar
+        setHasOptionsMenu(true);
 
-        // Customize the SearchView
-        customizeSearchView(searchView);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Optional: Handle the submit action
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Filter the movie list based on the query
-                filterMovies(newText);
-                return false;
-            }
-        });
-
-        // Fetch and display the movies
+        // Fetch and display movies
         fetchMovies();
 
         return view;
     }
 
-    // Function to filter the movie list
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        // Inflate the menu containing the SearchView
+        inflater.inflate(R.menu.menu_main, menu);
+
+        // Initialize SearchView from the menu
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        // Access the EditText inside the SearchView to customize text color
+        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+
+        // Change the search text color to black
+        searchEditText.setTextColor(getResources().getColor(R.color.black));
+
+        // Change the hint text color
+        searchEditText.setHintTextColor(getResources().getColor(R.color.black));
+
+        // Set the background color of the SearchView to white initially
+        searchView.setBackgroundColor(getResources().getColor(R.color.white));
+
+        // Add a listener to change the background color when the user starts typing (focus gained)
+        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    // When the search is focused, set background to white and text color to black
+                    searchView.setBackgroundColor(getResources().getColor(R.color.white));
+                    searchEditText.setTextColor(getResources().getColor(R.color.black));  // Black text when typing
+                } else {
+                    // Optional: Change back to another color when the user is not typing
+                    searchView.setBackgroundColor(getResources().getColor(R.color.white)); // Keep the background white
+                    searchEditText.setTextColor(getResources().getColor(R.color.black));  // Keep the text color black
+                }
+            }
+        });
+
+        // Set up SearchView to filter movie list based on query
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Optional: Handle query submission
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter the movie list when query text changes
+                filterMovies(newText);
+                return true;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    // Function to filter the movie list based on the query
     private void filterMovies(String query) {
         filteredList.clear();
         if (query.isEmpty()) {
@@ -74,13 +115,12 @@ public class HomeFragment extends Fragment {
             }
         }
 
-        // Update the RecyclerView with the filtered list
+        // Update RecyclerView with the filtered list
         movieAdapter.updateMovieList(filteredList);
     }
 
     private void fetchMovies() {
-        // Fetch movies from the API (assuming you already have this function working)
-        // Example API call
+        // Fetch movies from the API (assuming the function is set up correctly)
         MovieApiService apiService = MovieApiClient.getRetrofitInstance().create(MovieApiService.class);
         Call<List<Movie>> call = apiService.getAllMovies();
 
@@ -99,7 +139,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                // Handle error
+                // Handle failure
             }
         });
     }
@@ -108,38 +148,5 @@ public class HomeFragment extends Fragment {
         // Set adapter for RecyclerView
         movieAdapter = new MovieAdapter(movies);
         recyclerViewMovies.setAdapter(movieAdapter);
-    }
-
-    // Function to customize SearchView appearance
-    private void customizeSearchView(SearchView searchView) {
-        // Change the search icon color to red
-        ImageView searchIcon = searchView.findViewById(androidx.appcompat.R.id.search_mag_icon);
-        searchIcon.setColorFilter(getResources().getColor(R.color.my_primary)); // Set the search icon color to red
-
-        // Change the close button (clear button) color
-        ImageView closeButton = searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
-        closeButton.setColorFilter(getResources().getColor(R.color.my_primary)); // Set the close button color to red
-
-        // Change the search text color and hint text color when the user is typing
-        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
-        searchEditText.setTextColor(getResources().getColor(R.color.black)); // Set the search text color to black
-        searchEditText.setHintTextColor(getResources().getColor(R.color.black)); // Set the hint text color
-
-        // Set background color to black initially
-        searchView.setBackgroundColor(getResources().getColor(R.color.white));
-
-        // Add a listener to change background color to white when user starts typing
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (hasFocus) {
-                    searchView.setBackgroundColor(getResources().getColor(R.color.white)); // White background when typing
-                    searchEditText.setTextColor(getResources().getColor(R.color.black));  // Black text when typing
-                } else {
-                    searchView.setBackgroundColor(getResources().getColor(R.color.white)); // Return to black background
-                    searchEditText.setTextColor(getResources().getColor(R.color.black));  // White text initially
-                }
-            }
-        });
     }
 }

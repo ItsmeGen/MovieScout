@@ -1,5 +1,6 @@
 package com.example.movie_scout;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,16 +34,8 @@ public class ComedyFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comedy, container, false);
 
-        // Find TextView for Drama
-        TextView textAction = view.findViewById(R.id.btn_action);
-        TextView textHorror = view.findViewById(R.id.btn_horror);
-        TextView textDrama = view.findViewById(R.id.btn_drama);
-
-        // Set click listener to replace with DramaFragment
-        textDrama.setOnClickListener(v -> replaceFragment(new DramaFragment()));
-        textAction.setOnClickListener(v -> replaceFragment(new ActionFragment()));
-        textHorror.setOnClickListener(v -> replaceFragment(new HorrorFragment()));
-
+        ImageView arrowIcon = view.findViewById(R.id.arrowIcon);
+        arrowIcon.setOnClickListener(View -> replaceFragment(new GenreFragment()));
 
         // Initialize RecyclerView
         recyclerComedyMovies = view.findViewById(R.id.recyclerComedyMovies);

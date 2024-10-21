@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,15 +30,8 @@ public class HorrorFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_horror, container, false);
 
-        // Find TextView for Drama
-        TextView textAction = view.findViewById(R.id.btn_action);
-        TextView textDrama = view.findViewById(R.id.btn_drama);
-        TextView textComedy = view.findViewById(R.id.btn_comedy);
-
-        // Set click listener to replace with DramaFragment
-        textAction.setOnClickListener(v -> replaceFragment(new ActionFragment()));
-        textDrama.setOnClickListener(v -> replaceFragment(new DramaFragment()));
-        textComedy.setOnClickListener(v -> replaceFragment(new ComedyFragment()));
+        ImageView arrowIcon = view.findViewById(R.id.arrowIcon);
+        arrowIcon.setOnClickListener(View -> replaceFragment(new GenreFragment()));
 
         // Initialize RecyclerView
         recyclerHorrorMovies = view.findViewById(R.id.recyclerHorrorMovies); // use view.findViewById for fragments

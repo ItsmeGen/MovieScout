@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="50dp"
-        android:layout_gravity="center"
         android:paddingBottom="100dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

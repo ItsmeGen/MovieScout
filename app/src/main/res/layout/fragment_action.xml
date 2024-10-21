@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -10,61 +13,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="50dp"
-        android:paddingBottom="100dp"
-        android:layout_gravity="center" />
+        android:paddingBottom="100dp"/>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="30dp"
+        android:background="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textViewAction"
             android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:background="@color/black"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:text="Action Movies"
+            android:textColor="@color/text_color_selector"
+            android:textSize="25sp"
+            tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/btn_action"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Action"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
+        <ImageView
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/arrowIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrowicon"
+            tools:ignore="MissingConstraints" />
 
-            <TextView
-                android:id="@+id/btn_drama"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Drama"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
-
-            <TextView
-                android:id="@+id/btn_horror"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Horror"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
-            <TextView
-                android:id="@+id/btn_comedy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Comedy"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/text_color_selector"/>
-
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
