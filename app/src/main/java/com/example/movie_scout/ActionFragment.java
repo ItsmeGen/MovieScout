@@ -35,6 +35,7 @@ public class ActionFragment extends Fragment {
     private RecyclerView recyclerActionMovies;
     private MovieAdapter movieAdapter;
     private List<Movie> movieList = new ArrayList<>();
+    private List<Movie> filteredMovies = new ArrayList<>();
 
     @Nullable
     @Override
@@ -46,7 +47,7 @@ public class ActionFragment extends Fragment {
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         if (activity != null) {
             activity.setSupportActionBar(toolbar);  // Set Toolbar as the ActionBar
-            activity.getSupportActionBar().setTitle("Action Movies");  // Set Toolbar title
+            activity.getSupportActionBar().setTitle("Action Movies");
         }
         setUpRecyclerView(view); // Set up the RecyclerView
         setHasOptionsMenu(true); // Enable the options menu
@@ -59,7 +60,7 @@ public class ActionFragment extends Fragment {
         recyclerActionMovies.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerActionMovies.setHasFixedSize(true);
 
-        movieAdapter = new MovieAdapter(movieList); // Initialize adapter once
+        movieAdapter = new MovieAdapter(filteredMovies); // Initialize adapter once
         recyclerActionMovies.setAdapter(movieAdapter); // Set the adapter for the RecyclerView
     }
 
@@ -81,8 +82,7 @@ public class ActionFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String newText) {
                 if (newText.isEmpty()) {
-                    // When the search is cleared, update the adapter with the full list
-                    movieAdapter.updateMovieList(new ArrayList<>(movieList)); // Use a new list to avoid issues
+                    resetMovieList();
                 } else {
                     // Filter the list based on the search query
                     filterMovies(newText);
@@ -93,17 +93,20 @@ public class ActionFragment extends Fragment {
     }
 
     private void filterMovies(String query) {
-        List<Movie> filteredList = new ArrayList<>(); // Create a new filtered list
-        if (query.isEmpty()) {
-            filteredList.addAll(movieList); // Show all movies if the query is empty
-        } else {
-            for (Movie movie : movieList) {
-                if (movie.getTitle().toLowerCase().contains(query.toLowerCase())) {
-                    filteredList.add(movie); // Add movie to filtered list if it matches the query
-                }
+        filteredMovies.clear(); // Clear the filtered list
+        for (Movie movie : movieList) {
+            if (movie.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                filteredMovies.add(movie); // Add movie to filtered list if it matches the query
             }
         }
-        movieAdapter.updateMovieList(filteredList); // Update the adapter with the filtered list
+        movieAdapter.notifyDataSetChanged(); // Update the adapter with the filtered list
+    }
+
+    private void resetMovieList() {
+        // Reset the filteredMovies list with the full movieList
+        filteredMovies.clear();
+        filteredMovies.addAll(movieList);
+        movieAdapter.notifyDataSetChanged(); // Notify the adapter that the data has changed
     }
 
     private void fetchMovies() {
@@ -118,7 +121,7 @@ public class ActionFragment extends Fragment {
                 if (response.isSuccessful() && response.body() != null) {
                     movieList.clear(); // Clear the existing list
                     movieList.addAll(response.body()); // Store the movie list
-                    movieAdapter.notifyDataSetChanged(); // Notify the adapter about data changes
+                    resetMovieList(); // Notify the adapter about data changes
                 } else {
                     // Handle the case where the response is not successful
                 }
@@ -129,5 +132,6 @@ public class ActionFragment extends Fragment {
                 // Handle API failure (e.g., show a Toast or log the error)
             }
         });
+
     }
 }

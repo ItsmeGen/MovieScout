@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".GenreFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,56 +14,69 @@
         android:paddingBottom="100dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:gravity="center"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
+            android:padding="20dp"
             android:background="@color/black"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
+                android:layout_weight="1"
+                android:layout_marginEnd="15dp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:background="@drawable/btn_custom"
                 android:id="@+id/btn_action"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Action"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
+                android:textSize="17sp"
+                android:textColor="@color/white"/>
 
             <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginEnd="15dp"
+                android:padding="10dp"
                 android:id="@+id/btn_drama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Drama"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
+                android:textSize="17sp"
+                android:background="@drawable/btn_custom"
+                android:textColor="@color/white"/>
 
             <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginEnd="15dp"
+                android:padding="10dp"
+                android:background="@drawable/btn_custom"
                 android:id="@+id/btn_horror"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Horror"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
+                android:textSize="17sp"
+                android:textColor="@color/white"/>
+
             <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginEnd="15dp"
+                android:padding="10dp"
                 android:id="@+id/btn_comedy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Comedy"
-                android:textSize="25sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:textColor="@color/text_color_selector"/>
+                android:textSize="17sp"
+                android:background="@drawable/btn_custom"
+                android:textColor="@color/white"/>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

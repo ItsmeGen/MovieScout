@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +24,10 @@ public class MenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         // Find the TextView for Sign Out
-        TextView textSignOut = view.findViewById(R.id.sign_out);
+        Button btnSignOut = view.findViewById(R.id.sign_out);
 
         // Set click listener for sign out
-        textSignOut.setOnClickListener(v -> {
-            // Clear user session (e.g., SharedPreferences)
+        btnSignOut.setOnClickListener(v -> {
             SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userSession", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.clear();  // Remove all saved data
