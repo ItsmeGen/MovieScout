@@ -52,10 +52,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return movieList.size();
     }
 
-    // Method to update the list of movies
     public void updateMovieList(List<Movie> newMovieList) {
-        movieList = newMovieList;  // Update the movie list with new data
-        notifyDataSetChanged();    // Notify the adapter that the data has changed
+        this.movieList.clear(); // Clear the old list
+        this.movieList.addAll(newMovieList); // Add new items
+        notifyDataSetChanged(); // Notify adapter about the dataset change
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {

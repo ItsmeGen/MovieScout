@@ -30,4 +30,3 @@ public class Movie {
     public int getYear_released() { return year_released; }
     public String getImage_url() { return image_url; }
 }
-

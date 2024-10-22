@@ -7,16 +7,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,88 +28,68 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerViewMovies;
     private MovieAdapter movieAdapter;
     private List<Movie> movieList = new ArrayList<>();
-    private List<Movie> filteredList = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Initialize RecyclerView
+        // Setup the Toolbar and set it as the ActionBar
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        if (activity != null) {
+            activity.setSupportActionBar(toolbar);  // Set Toolbar as the ActionBar
+            activity.getSupportActionBar().setTitle("Trends and Popular");  // Set Toolbar title
+        }
+
+        setUpRecyclerView(view); // Set up the RecyclerView
+        setHasOptionsMenu(true); // Enable the options menu
+        fetchMovies(); // Fetch movies from API
+        return view;
+    }
+
+    private void setUpRecyclerView(View view) {
         recyclerViewMovies = view.findViewById(R.id.recyclerViewMovies);
         recyclerViewMovies.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerViewMovies.setHasFixedSize(true);
 
-        // Enable options menu to show SearchView in the toolbar
-        setHasOptionsMenu(true);
-
-        // Fetch and display movies
-        fetchMovies();
-
-        return view;
+        movieAdapter = new MovieAdapter(movieList); // Initialize adapter once
+        recyclerViewMovies.setAdapter(movieAdapter); // Set the adapter for the RecyclerView
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        // Inflate the menu containing the SearchView
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_main, menu); // Inflate the menu
 
-        // Initialize SearchView from the menu
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setQueryHint("Search Here");
 
-        // Access the EditText inside the SearchView to customize text color
-        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
-
-        // Change the search text color to black
-        searchEditText.setTextColor(getResources().getColor(R.color.black));
-
-        // Change the hint text color
-        searchEditText.setHintTextColor(getResources().getColor(R.color.black));
-
-        // Set the background color of the SearchView to white initially
-        searchView.setBackgroundColor(getResources().getColor(R.color.white));
-
-        // Add a listener to change the background color when the user starts typing (focus gained)
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                if (hasFocus) {
-                    // When the search is focused, set background to white and text color to black
-                    searchView.setBackgroundColor(getResources().getColor(R.color.white));
-                    searchEditText.setTextColor(getResources().getColor(R.color.black));  // Black text when typing
-                } else {
-                    // Optional: Change back to another color when the user is not typing
-                    searchView.setBackgroundColor(getResources().getColor(R.color.white)); // Keep the background white
-                    searchEditText.setTextColor(getResources().getColor(R.color.black));  // Keep the text color black
-                }
-            }
-        });
-
-        // Set up SearchView to filter movie list based on query
+        // Set up SearchView listener
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Optional: Handle query submission
-                return false;
+                return false; // Return false to not consume the event
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                // Filter the movie list when query text changes
-                filterMovies(newText);
+                if (newText.isEmpty()) {
+                    // When the search is cleared, update the adapter with the full list
+                    movieAdapter.updateMovieList(new ArrayList<>(movieList)); // Use a new list to avoid issues
+                } else {
+                    // Filter the list based on the search query
+                    filterMovies(newText);
+                }
                 return true;
             }
         });
-
-        super.onCreateOptionsMenu(menu, inflater);
     }
 
-    // Function to filter the movie list based on the query
     private void filterMovies(String query) {
-        filteredList.clear();
+        List<Movie> filteredList = new ArrayList<>(); // Create a new filtered list
         if (query.isEmpty()) {
-            filteredList.addAll(movieList); // If search query is empty, show all movies
+            filteredList.addAll(movieList); // Show all movies if the query is empty
         } else {
             for (Movie movie : movieList) {
                 if (movie.getTitle().toLowerCase().contains(query.toLowerCase())) {
@@ -114,39 +97,29 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-
-        // Update RecyclerView with the filtered list
-        movieAdapter.updateMovieList(filteredList);
+        movieAdapter.updateMovieList(filteredList); // Update the adapter with the filtered list
     }
 
     private void fetchMovies() {
-        // Fetch movies from the API (assuming the function is set up correctly)
         MovieApiService apiService = MovieApiClient.getRetrofitInstance().create(MovieApiService.class);
         Call<List<Movie>> call = apiService.getAllMovies();
 
         call.enqueue(new Callback<List<Movie>>() {
             @Override
             public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                if (response.isSuccessful()) {
-                    List<Movie> movies = response.body();
-                    if (movies != null) {
-                        movieList = movies;
-                        filteredList.addAll(movieList); // Initialize filtered list
-                        displayMovies(movieList);
-                    }
+                if (response.isSuccessful() && response.body() != null) {
+                    movieList.clear(); // Clear the existing list
+                    movieList.addAll(response.body()); // Store the movie list
+                    movieAdapter.notifyDataSetChanged(); // Notify the adapter about data changes
+                } else {
+                    // Handle the case where the response is not successful
                 }
             }
 
             @Override
             public void onFailure(Call<List<Movie>> call, Throwable t) {
-                // Handle failure
+                // Handle API failure (e.g., show a Toast or log the error)
             }
         });
-    }
-
-    private void displayMovies(List<Movie> movies) {
-        // Set adapter for RecyclerView
-        movieAdapter = new MovieAdapter(movies);
-        recyclerViewMovies.setAdapter(movieAdapter);
     }
 }
