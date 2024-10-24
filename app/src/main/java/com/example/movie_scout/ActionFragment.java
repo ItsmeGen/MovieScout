@@ -1,5 +1,6 @@
 package com.example.movie_scout;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,6 +73,20 @@ public class ActionFragment extends Fragment {
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("Search Here");
+
+        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+
+        if (searchEditText != null) {
+            // Set the query hint color to white
+            searchEditText.setHintTextColor(Color.BLACK);
+
+            // Set the typed text color to white
+            searchEditText.setTextColor(Color.BLACK);
+
+            // Optionally, set the text size if needed
+            searchEditText.setTextSize(16); // Adjust this size as needed
+        }
+        searchView.setBackgroundColor(Color.WHITE);
 
         // Set up SearchView listener
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

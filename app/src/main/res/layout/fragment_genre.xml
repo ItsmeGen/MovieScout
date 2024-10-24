@@ -3,28 +3,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     tools:context=".GenreFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <androidx.recyclerview.widget.RecyclerView
+        app:layout_constraintTop_toBottomOf="@+id/constraint"
         android:id="@+id/recyclerViewMovies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:paddingBottom="100dp" />
+        android:paddingBottom="100dp"
+        tools:ignore="MissingConstraints" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:gravity="center"
-            android:padding="20dp"
-            android:background="@color/black"
-            android:orientation="horizontal"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="10dp"
+            android:id="@+id/constraint"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            tools:ignore="MissingConstraints">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/genre"
+                android:textSize="40sp"
+                android:textColor="@color/my_primary"/>
+
+            <LinearLayout
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:gravity="center"
+                android:padding="20dp"
+                android:background="@color/black"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <TextView
                 android:layout_weight="1"
@@ -68,7 +87,6 @@
             <TextView
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginEnd="15dp"
                 android:padding="10dp"
                 android:id="@+id/btn_comedy"
                 android:layout_width="wrap_content"
@@ -78,7 +96,9 @@
                 android:background="@drawable/btn_custom"
                 android:textColor="@color/white"/>
 
-        </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

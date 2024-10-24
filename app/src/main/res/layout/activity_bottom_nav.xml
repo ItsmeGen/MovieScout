@@ -7,13 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".BottomNavMenu">
 
-
-
-
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigationMenu"
@@ -24,7 +22,8 @@
             app:itemTextColor="@color/nav_text_color"
             app:itemIconTint="@color/nav_color_icon"
             app:menu="@menu/bottom_nav_menu"
-            android:layout_gravity="bottom"/>
+            android:layout_gravity="bottom"
+            app:labelVisibilityMode="labeled"/>
 
     </FrameLayout>
 

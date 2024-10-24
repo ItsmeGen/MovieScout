@@ -1,5 +1,6 @@
 package com.example.movie_scout;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -7,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,6 +68,21 @@ public class HomeFragment extends Fragment {
         SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setQueryHint("Search Here");
 
+        // Access the SearchAutoComplete field inside the SearchView
+        EditText searchEditText = searchView.findViewById(androidx.appcompat.R.id.search_src_text);
+
+        if (searchEditText != null) {
+            // Set the query hint color to white
+            searchEditText.setHintTextColor(Color.BLACK);
+
+            // Set the typed text color to white
+            searchEditText.setTextColor(Color.BLACK);
+
+            // Optionally, set the text size if needed
+            searchEditText.setTextSize(16); // Adjust this size as needed
+        }
+        searchView.setBackgroundColor(Color.WHITE);
+
         // Set up SearchView listener
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -86,6 +103,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
 
     private void filterMovies(String query) {
         filteredMovies.clear(); // Clear the filtered list
