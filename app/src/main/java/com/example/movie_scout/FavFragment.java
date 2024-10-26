@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 public class FavFragment extends Fragment {
-
+    private TextView noFavoritesMessage;
     private RecyclerView favoritesRecyclerView;
     private MovieAdapter favoritesAdapter;
     private List<Movie> favoriteMovies;
@@ -25,7 +26,7 @@ public class FavFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fav, container, false);
-
+        noFavoritesMessage = view.findViewById(R.id.noFavoritesMessage);
         favoritesRecyclerView = view.findViewById(R.id.favoritesRecyclerView);
         favoriteMovies = new ArrayList<>();
 
@@ -43,8 +44,11 @@ public class FavFragment extends Fragment {
         Set<String> favoriteSet = favoriteManager.getFavorites();
 
         if (favoriteSet.isEmpty()) {
-            Toast.makeText(getContext(), "No favorite movies found.", Toast.LENGTH_SHORT).show();
+            favoritesRecyclerView.setVisibility(View.GONE);
+            noFavoritesMessage.setVisibility(View.VISIBLE); //
         } else {
+            favoritesRecyclerView.setVisibility(View.VISIBLE);
+            noFavoritesMessage.setVisibility(View.GONE);
             Gson gson = new Gson();
             for (String movieJson : favoriteSet) {
                 Movie movie = gson.fromJson(movieJson, Movie.class);
