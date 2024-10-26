@@ -6,13 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.Set;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
 
@@ -45,6 +48,35 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Glide.with(holder.itemView.getContext())
                 .load(movie.getImage_url())
                 .into(holder.movieImageView);
+
+        // Convert the movie object to JSON for favorite checking
+        Gson gson = new Gson();
+        String movieJson = gson.toJson(movie);
+
+        FavoriteManager favoriteManager = new FavoriteManager(holder.itemView.getContext());
+        Set<String> favorites = favoriteManager.getFavorites();
+        boolean isFavorite = favorites.contains(movieJson);
+
+        // Set the favorite icon based on whether the movie is in favorites
+        holder.favoriteIcon.setImageResource(isFavorite ? R.drawable.filled_heart : R.drawable.favorite_icon);
+
+        // Set up the favorite icon click listener
+        holder.favoriteIcon.setOnClickListener(v -> {
+            if (isFavorite) {
+                // Remove from favorites
+                favorites.remove(movieJson);
+                holder.favoriteIcon.setImageResource(R.drawable.favorite_icon); // Change icon to unfilled
+                Toast.makeText(v.getContext(), "Removed from favorites", Toast.LENGTH_SHORT).show();
+            } else {
+                // Add to favorites
+                favorites.add(movieJson);
+                holder.favoriteIcon.setImageResource(R.drawable.filled_heart); // Change icon to filled
+                Toast.makeText(v.getContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
+            }
+            // Update the favorites in FavoriteManager
+            favoriteManager.updateFavorites(favorites); // Create this method in FavoriteManager to save changes
+            notifyItemChanged(position);
+        });
     }
 
     @Override
@@ -60,7 +92,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView, descriptionTextView, genreTextView, yearTextView, directorTextView;
-        ImageView movieImageView;
+        ImageView movieImageView, favoriteIcon; // Add favoriteIcon here
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +102,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             directorTextView = itemView.findViewById(R.id.directorTextView);
             yearTextView = itemView.findViewById(R.id.yearTextView);
             movieImageView = itemView.findViewById(R.id.movieImageView);
+            favoriteIcon = itemView.findViewById(R.id.favorite_icon); // Initialize favoriteIcon
         }
     }
 }
