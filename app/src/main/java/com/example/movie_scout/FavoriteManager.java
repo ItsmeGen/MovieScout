@@ -23,7 +23,9 @@ public class FavoriteManager {
     public Set<String> getFavorites() {
         return sharedPreferences.getStringSet(KEY_FAVORITES, new HashSet<>());
     }
+
     public void updateFavorites(Set<String> favorites) {
         sharedPreferences.edit().putStringSet(KEY_FAVORITES, favorites).apply();
     }
 }
+

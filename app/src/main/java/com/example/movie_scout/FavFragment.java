@@ -45,7 +45,7 @@ public class FavFragment extends Fragment {
 
         if (favoriteSet.isEmpty()) {
             favoritesRecyclerView.setVisibility(View.GONE);
-            noFavoritesMessage.setVisibility(View.VISIBLE); //
+            noFavoritesMessage.setVisibility(View.VISIBLE);
         } else {
             favoritesRecyclerView.setVisibility(View.VISIBLE);
             noFavoritesMessage.setVisibility(View.GONE);
@@ -55,6 +55,6 @@ public class FavFragment extends Fragment {
                 favoriteMovies.add(movie);
             }
         }
-
     }
 }
+
